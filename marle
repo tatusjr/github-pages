@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz Cumple Marlen</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #fff0f5, #f0e6ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .container {
+      text-align: center;
+    }
+    .input-card {
+      background: #ffffffcc;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    input {
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      margin: 5px;
+    }
+    .submit-btn, .download-btn {
+      padding: 10px 20px;
+      background-color: #d291bc;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .submit-btn:hover, .download-btn:hover {
+      background-color: #b66ebd;
+    }
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 500px;
+      max-height: 90vh;
+      overflow-y: auto;
+      display: none;
+      animation: fadeIn 2s forwards;
+    }
+    h1 {
+      color: #c94f7c;
+      font-size: 30px;
+    }
+    p {
+      color: #333;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    .gallery {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .gallery img {
+      width: 30%;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: #ff69b4;
+      opacity: 0.8;
+      animation: confetti 3s linear infinite;
+    }
+    @keyframes confetti {
+      0% { transform: translateY(0) rotate(0); }
+      100% { transform: translateY(100vh) rotate(360deg); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="input-card" id="birthInput">
+      <h2>🎂 Introduce tu fecha de nacimiento</h2>
+      <input type="number" id="dia" placeholder="Día" min="1" max="31">
+      <input type="number" id="mes" placeholder="Mes" min="1" max="12">
+      <input type="number" id="anio" placeholder="Año" min="1900">
+      <br>
+      <button class="submit-btn" onclick="showCard()">Aceptar</button>
+    </div>
+
+    <div class="card" id="birthdayCard">
+      <h1>¡Feliz cumpleaños Marlen! 🎉🌸</h1>
+      <img src="./e255e0d6-7701-4976-b7b6-e2f4a173bed2.png" alt="Marlen" style="width: 90%; border-radius: 20px;">
+      <p>Hoy es un día muy especial… ¡cumples 17 años! Y no puedo estar más feliz de celebrar contigo otro año de vida, de luz y de todo lo bonito que eres. 💖</p>
+      <p>Desde que llegaste a mi vida has sido una persona única, con un corazón hermoso y una forma de ser que simplemente encanta. 🌟</p>
+      <p>Deseo que este nuevo año te traiga cosas maravillosas, personas que te cuiden como mereces y momentos que se queden para siempre en tu corazón. Que nunca falte el amor, la paz y los sueños por los que luchar. ✨</p>
+      <p><strong>Felices 17, Marlensita 🎂</strong><br>Te quiero muchísimo y siempre voy a estar para ti. <br>¡Feliz cumpleaños!<br>Te mereces todo lo lindo del mundo. Gracias por existir 💗</p>
+      <hr>
+      <p><em>“No se te olvide que aquí estoy<br>Confía en mí que aquí estaré<br>Que no hay que ser invencible<br>Que sólo hay que ser valiente”</em><br><strong>— Acróstico, Shakira 🎵</strong></p>
+      <div class="gallery">
+        <img src="./d4d67ab9-da4d-4b09-8ec4-a985c47fffb0.png" alt="Marlen 2">
+        <img src="./77b6162a-bda6-4af9-a15c-8ad16b42dbcb.png" alt="Marlen 3">
+      </div>
+      <button class="download-btn" onclick="downloadCard()">Descargar Tarjeta 🎁</button>
+    </div>
+  </div>
+
+  <audio id="birthdayMusic" loop>
+    <source src="https://www.dropbox.com/scl/fi/r1yhycwcv9vcsfpgpxboe/EdSheeran-Photograph-CarlaMorrison.mp3?rlkey=ckn4z5mcc4ksh4s9ljkhj8kpj&raw=1" type="audio/mpeg">
+    Tu navegador no soporta audio HTML.
+  </audio>
+
+  <script>
+    function showCard() {
+      const dia = document.getElementById("dia").value;
+      const mes = document.getElementById("mes").value;
+      const anio = document.getElementById("anio").value;
+      if (dia && mes && anio) {
+        document.getElementById('birthInput').style.display = 'none';
+        document.getElementById('birthdayCard').style.display = 'block';
+        document.getElementById('birthdayMusic').play();
+        for (let i = 0; i < 80; i++) {
+          let confetti = document.createElement('div');
+          confetti.className = 'confetti';
+          confetti.style.left = Math.random() * 100 + 'vw';
+          confetti.style.backgroundColor = ['#ff69b4', '#ffd700', '#b19cd9', '#fff0f5'][Math.floor(Math.random() * 4)];
+          confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+          document.body.appendChild(confetti);
+          setTimeout(() => confetti.remove(), 5000);
+        }
+      } else {
+        alert("Por favor completa tu fecha de nacimiento");
+      }
+    }
+
+    function downloadCard() {
+      const card = document.getElementById('birthdayCard');
+      html2canvas(card).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'FelizCumpleMarlen.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      });
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</body>
+</html>
